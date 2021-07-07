@@ -10,45 +10,39 @@ function Card() {
   const [pointer, setPointer] = useState(0);
 
   return (
-    <>
-    {/* Recuperando os Dados das imagens */}
-      <div>
+    <div className="container">
+      {/* Recuperando os Dados das imagens */}
+
+      {/* Image como background do Carousel, Url acessa o arquivo Examples > monitora o estado de 'pointer' */}
+      <div className="carouselInner" style={{ backgroundImage: `url(${images[pointer].image})` }}>
+
+        {/* Margem da esquerda, setPointer é chamado e decrementa um do estado de 'pointer' */}
+        <div className="left" onClick={() => {
+          pointer > 0 && setPointer(pointer - 1)
+        }}>
+          <ArrowBackIosIcon style={{ fontSize: 40 }} />
+        </div>
+
+        {/* Centro do carousel, com o Title e Content */}
+        <div className="center">
         <h1>{images[pointer].title}</h1>
         <h4>
           <p>{images[pointer].data}</p>
           <p>{images[pointer].content}</p>
         </h4>
-
-      </div>
-      <div className="container">
-
-        {/* Image como background do Carousel, Url acessa o arquivo Examples > monitora o estado de 'pointer' */}
-        <div className="carouselInner" style={{ backgroundImage: `url(${images[pointer].image})` }}>
-
-          {/* Margem da esquerda, setPointer é chamado e decrementa um do estado de 'pointer' */}
-          <div className="left" onClick={() => {
-            pointer > 0 && setPointer(pointer - 1)
-          }}>
-            <ArrowBackIosIcon style={{ fontSize: 40 }} />
-          </div>
-
-          {/* Centro do carousel, com o Title e Content */}
-          <div className="center">
-          </div>
-
-          {/* Margem da direita, Condição > Se o estado do 'pointer' for menor que o tamanho do array menos um,
-        o contador irá incrementar mais um no estado do 'pointer' */}
-          <div className="right" onClick={() => {
-            pointer < images.length - 1 && setPointer(pointer + 1)
-          }}>
-            
-            <ArrowForwardIosIcon style={{ fontSize: 40 }} />
-          </div>
-
-
         </div>
+
+        {/* Margem da direita, Condição > Se o estado do 'pointer' for menor que o tamanho do array menos um,
+        o contador irá incrementar mais um no estado do 'pointer' */}
+        <div className="right" onClick={() => {
+          pointer < images.length - 1 && setPointer(pointer + 1)
+        }}>
+
+          <ArrowForwardIosIcon style={{ fontSize: 40 }} />
+        </div>
+
       </div>
-    </>
+    </div>
   )
 }
 

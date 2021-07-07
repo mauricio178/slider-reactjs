@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
-import Card from '../src/components/Card/card'
+import List from '../src/components/List/list'
+
+
 
 function App() {
 
+  const [state, setState] = useState([]);
+
   return (
-    <div className="App">
-      <Card />
+    <div className='App'>
+      <List/>
     </div>
   );
-}
+};
 
 export default App;
